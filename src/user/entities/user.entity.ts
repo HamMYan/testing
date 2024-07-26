@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Book } from "../../book/entities/book.entity";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class User {
@@ -19,4 +20,7 @@ export class User {
     
     @Column()
     salary:number
+
+    @OneToMany(type => Book, books => books.user)
+    books:Book[]
 }
